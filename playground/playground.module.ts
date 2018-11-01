@@ -25,7 +25,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
-    FsExampleModule,
+    FsExampleModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
   entryComponents: [
