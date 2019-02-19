@@ -1,0 +1,1265 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>FsImageEditorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>/Users/basters/dev/frontend/firestitch/image-editor/src/app/components/image-editor/image-editor.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>fs-image-editor</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>image-editor.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>image-editor.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mode">mode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modes">modes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#settings">settings</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#changeBrightness">changeBrightness</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#changeContrast">changeContrast</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#changeFlip">changeFlip</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#changeHue">changeHue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#changeRotation">changeRotation</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#changeSaturation">changeSaturation</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#rotateByDegree">rotateByDegree</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setMode">setMode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#config">config</a>
+                            </li>
+                            <li>
+                                <a href="#imageUrl">imageUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#imageUrl">imageUrl</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_editor: <a href="../injectables/FsImageEditorService.html">FsImageEditorService</a>, _el: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_editor</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/FsImageEditorService.html" target="_self" >FsImageEditorService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_el</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="config"></a>
+                        <b>config</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code><a href="../classes/Editor.html" target="_self" >EditorConfig</a></code>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="imageUrl"></a>
+                        <b>imageUrl</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeBrightness"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            changeBrightness
+                            </b>
+                            <a href="#changeBrightness"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>changeBrightness()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set a new brightness filter value for image</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeContrast"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            changeContrast
+                            </b>
+                            <a href="#changeContrast"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>changeContrast()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set a new contrast filter value for image</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeFlip"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            changeFlip
+                            </b>
+                            <a href="#changeFlip"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>changeFlip(type: "x" | "y")</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set a new value for scaleX or scaleY
+scaleX = horizontal flip and scaleY = vertical flip</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>type</td>
+                                                        <td>
+                                                                    <code>&quot;x&quot; | &quot;y&quot;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeHue"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            changeHue
+                            </b>
+                            <a href="#changeHue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>changeHue()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set a new hue filter value for image</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeRotation"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            changeRotation
+                            </b>
+                            <a href="#changeRotation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>changeRotation()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set a new rotation value for image</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeSaturation"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            changeSaturation
+                            </b>
+                            <a href="#changeSaturation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>changeSaturation()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set a new saturation filter value for image</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnDestroy"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            ngOnDestroy
+                            </b>
+                            <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>ngOnDestroy()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rotateByDegree"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            rotateByDegree
+                            </b>
+                            <a href="#rotateByDegree"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>rotateByDegree(degree: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Takes near value to 45 (degree point) depends on exists rotation</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>degree</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setMode"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            setMode
+                            </b>
+                            <a href="#setMode"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>setMode(mode: ModeList)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Set mode and change containers depends on it if it is necessary</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>mode</td>
+                                                        <td>
+                                                                    <code>ModeList</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mode"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            mode</b>
+                            <a href="#mode"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ModeList</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>ModeList.Home</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modes"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modes</b>
+                            <a href="#modes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>ModeList</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="settings"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            settings</b>
+                            <a href="#settings"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/ISettings.html" target="_self" >ISettings</a></code>
+
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="imageUrl"></a>
+                        <span class="name"><b>imageUrl</b><a href="#imageUrl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>imageUrl()</code></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>imageUrl(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>url</td>
+                                                    
+                                                            <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;img-container&quot;&gt;&lt;/div&gt;
+    &lt;div class&#x3D;&quot;controls&quot; [ngSwitch]&#x3D;&quot;mode&quot; *ngIf&#x3D;&quot;imageUrl&quot;&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Home&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;adjust-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Adjust)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;tune&lt;/i&gt;
+                &lt;label&gt;Adjust&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;transform-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Transform)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;crop_rotate&lt;/i&gt;
+                &lt;label&gt;Transform&lt;/label&gt;
+            &lt;/button&gt;
+        &lt;/ng-container&gt;
+
+        &lt;!-- Adjust --&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Adjust&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Home)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;brightness-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Brightness)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;brightness_5&lt;/i&gt;
+                &lt;label&gt;Brightness&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;contrast-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Contrast)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;tonality&lt;/i&gt;
+                &lt;label&gt;Contrast&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;hue-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Hue)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;palette&lt;/i&gt;
+                &lt;label&gt;Hue&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;saturation-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Saturation)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;invert_colors&lt;/i&gt;
+                &lt;label&gt;Saturation&lt;/label&gt;
+            &lt;/button&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Brightness&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Adjust)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;div class&#x3D;&quot;control-input&quot; id&#x3D;&quot;brightness&quot;&gt;
+                &lt;div&gt;
+                    &lt;input type&#x3D;&quot;range&quot; min&#x3D;&quot;-1&quot; max&#x3D;&quot;1&quot; value&#x3D;&quot;0&quot; step&#x3D;&quot;0.01&quot;
+                           [(ngModel)]&#x3D;&quot;settings.brightness&quot; (ngModelChange)&#x3D;&quot;changeBrightness()&quot;&gt;
+                    &lt;label&gt; Brightness &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Contrast&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Adjust)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;div class&#x3D;&quot;control-input&quot; id&#x3D;&quot;contrast&quot;&gt;
+                &lt;div&gt;
+                    &lt;input type&#x3D;&quot;range&quot; min&#x3D;&quot;-1&quot; max&#x3D;&quot;1&quot; value&#x3D;&quot;0&quot; step&#x3D;&quot;0.01&quot;
+                           [(ngModel)]&#x3D;&quot;settings.contrast&quot; (ngModelChange)&#x3D;&quot;changeContrast()&quot;&gt;
+                    &lt;label&gt; Contrast &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Hue&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Adjust)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;div class&#x3D;&quot;control-input&quot; id&#x3D;&quot;hue&quot;&gt;
+                &lt;div&gt;
+                    &lt;input type&#x3D;&quot;range&quot; min&#x3D;&quot;-1&quot; max&#x3D;&quot;1&quot; value&#x3D;&quot;0&quot; step&#x3D;&quot;0.01&quot;
+                           [(ngModel)]&#x3D;&quot;settings.hue&quot; (ngModelChange)&#x3D;&quot;changeHue()&quot;&gt;
+                    &lt;label&gt; Hue &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Saturation&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Adjust)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;div class&#x3D;&quot;control-input&quot; id&#x3D;&quot;saturation&quot;&gt;
+                &lt;div&gt;
+                    &lt;input type&#x3D;&quot;range&quot; min&#x3D;&quot;-1&quot; max&#x3D;&quot;1&quot; value&#x3D;&quot;0&quot; step&#x3D;&quot;0.01&quot;
+                           [(ngModel)]&#x3D;&quot;settings.saturation&quot; (ngModelChange)&#x3D;&quot;changeSaturation()&quot;&gt;
+                    &lt;label&gt; Saturation &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+
+        &lt;!-- Transform --&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Transform&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Home)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;flip-hor&quot; (click)&#x3D;&quot;changeFlip(&#x27;x&#x27;)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;flip&lt;/i&gt;
+                &lt;label&gt;Flip&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;flip-ver&quot; (click)&#x3D;&quot;changeFlip(&#x27;y&#x27;)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons icon-rotate-90&quot;&gt;flip&lt;/i&gt;
+                &lt;label&gt;Flip&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;rotate-left&quot; (click)&#x3D;&quot;rotateByDegree(-45)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;rotate_left&lt;/i&gt;
+                &lt;label&gt;Rotate Left&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;rotate-right&quot; (click)&#x3D;&quot;rotateByDegree(45)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;rotate_right&lt;/i&gt;
+                &lt;label&gt;Rotate Right&lt;/label&gt;
+            &lt;/button&gt;
+
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; id&#x3D;&quot;rotate-free-mode-btn&quot; (click)&#x3D;&quot;setMode(modes.Rotate)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;sync&lt;/i&gt;
+                &lt;label&gt;Free Rotate&lt;/label&gt;
+            &lt;/button&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;modes.Rotate&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;control-button&quot; (click)&#x3D;&quot;setMode(modes.Transform)&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;navigate_before&lt;/i&gt;
+            &lt;/button&gt;
+
+            &lt;div class&#x3D;&quot;control-input&quot; id&#x3D;&quot;rotate&quot;&gt;
+                &lt;div&gt;
+                    &lt;input type&#x3D;&quot;range&quot; min&#x3D;&quot;-180&quot; max&#x3D;&quot;180&quot; value&#x3D;&quot;0&quot; step&#x3D;&quot;10&quot;
+                           [(ngModel)]&#x3D;&quot;settings.rotate&quot; (ngModelChange)&#x3D;&quot;changeRotation()&quot;&gt;
+                    &lt;label&gt; Free Rotate &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>image-editor.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;./styles/cropper&quot;;
+@import &quot;./styles/fs-image-editor-slider&quot;;
+
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+
+  .control-button {
+    width: 80px;
+    height: 80px;
+    background-color: #cfcfcf;
+    color: dimgray;
+    display: inline-block;
+    margin: 3px;
+
+    i {
+      font-size: 44px;
+    }
+
+    label {
+      display: block;
+    }
+  }
+
+  .control-input {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #cfcfcf;
+    color: dimgray;
+    padding: 0 20px;
+
+    label {
+      display: flex;
+      justify-content: center;
+      font-size: 11px;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.icon-rotate-90 {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+:host {
+  ::ng-deep {
+    .hidden {
+      display: none;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">    <div class="img-container"></div>    <div class="controls" [ngSwitch]="mode" *ngIf="imageUrl">        <ng-container *ngSwitchCase="modes.Home">            <button type="button" class="control-button" id="adjust-mode-btn" (click)="setMode(modes.Adjust)">                <i class="material-icons">tune</i>                <label>Adjust</label>            </button>            <button type="button" class="control-button" id="transform-mode-btn" (click)="setMode(modes.Transform)">                <i class="material-icons">crop_rotate</i>                <label>Transform</label>            </button>        </ng-container>        <!-- Adjust -->        <ng-container *ngSwitchCase="modes.Adjust">            <button type="button" class="control-button" (click)="setMode(modes.Home)">                <i class="material-icons">navigate_before</i>            </button>            <button type="button" class="control-button" id="brightness-mode-btn" (click)="setMode(modes.Brightness)">                <i class="material-icons">brightness_5</i>                <label>Brightness</label>            </button>            <button type="button" class="control-button" id="contrast-mode-btn" (click)="setMode(modes.Contrast)">                <i class="material-icons">tonality</i>                <label>Contrast</label>            </button>            <button type="button" class="control-button" id="hue-mode-btn" (click)="setMode(modes.Hue)">                <i class="material-icons">palette</i>                <label>Hue</label>            </button>            <button type="button" class="control-button" id="saturation-mode-btn" (click)="setMode(modes.Saturation)">                <i class="material-icons">invert_colors</i>                <label>Saturation</label>            </button>        </ng-container>        <ng-container *ngSwitchCase="modes.Brightness">            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">                <i class="material-icons">navigate_before</i>            </button>            <div class="control-input" id="brightness">                <div>                    <input type="range" min="-1" max="1" value="0" step="0.01"                           [(ngModel)]="settings.brightness" (ngModelChange)="changeBrightness()">                    <label> Brightness </label>                </div>            </div>        </ng-container>        <ng-container *ngSwitchCase="modes.Contrast">            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">                <i class="material-icons">navigate_before</i>            </button>            <div class="control-input" id="contrast">                <div>                    <input type="range" min="-1" max="1" value="0" step="0.01"                           [(ngModel)]="settings.contrast" (ngModelChange)="changeContrast()">                    <label> Contrast </label>                </div>            </div>        </ng-container>        <ng-container *ngSwitchCase="modes.Hue">            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">                <i class="material-icons">navigate_before</i>            </button>            <div class="control-input" id="hue">                <div>                    <input type="range" min="-1" max="1" value="0" step="0.01"                           [(ngModel)]="settings.hue" (ngModelChange)="changeHue()">                    <label> Hue </label>                </div>            </div>        </ng-container>        <ng-container *ngSwitchCase="modes.Saturation">            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">                <i class="material-icons">navigate_before</i>            </button>            <div class="control-input" id="saturation">                <div>                    <input type="range" min="-1" max="1" value="0" step="0.01"                           [(ngModel)]="settings.saturation" (ngModelChange)="changeSaturation()">                    <label> Saturation </label>                </div>            </div>        </ng-container>        <!-- Transform -->        <ng-container *ngSwitchCase="modes.Transform">            <button type="button" class="control-button" (click)="setMode(modes.Home)">                <i class="material-icons">navigate_before</i>            </button>            <button type="button" class="control-button" id="flip-hor" (click)="changeFlip(\'x\')">                <i class="material-icons">flip</i>                <label>Flip</label>            </button>            <button type="button" class="control-button" id="flip-ver" (click)="changeFlip(\'y\')">                <i class="material-icons icon-rotate-90">flip</i>                <label>Flip</label>            </button>            <button type="button" class="control-button" id="rotate-left" (click)="rotateByDegree(-45)">                <i class="material-icons">rotate_left</i>                <label>Rotate Left</label>            </button>            <button type="button" class="control-button" id="rotate-right" (click)="rotateByDegree(45)">                <i class="material-icons">rotate_right</i>                <label>Rotate Right</label>            </button>            <button type="button" class="control-button" id="rotate-free-mode-btn" (click)="setMode(modes.Rotate)">                <i class="material-icons">sync</i>                <label>Free Rotate</label>            </button>        </ng-container>        <ng-container *ngSwitchCase="modes.Rotate">            <button type="button" class="control-button" (click)="setMode(modes.Transform)">                <i class="material-icons">navigate_before</i>            </button>            <div class="control-input" id="rotate">                <div>                    <input type="range" min="-180" max="180" value="0" step="10"                           [(ngModel)]="settings.rotate" (ngModelChange)="changeRotation()">                    <label> Free Rotate </label>                </div>            </div>        </ng-container>    </div></div></div>'
+    var COMPONENTS = [{'name': 'FsImageEditorComponent', 'selector': 'fs-image-editor'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FsImageEditorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FsImageEditorComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
