@@ -1,4 +1,11 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { FsImageEditorService } from '../../services/image-editor.service';
 import { ISettings } from '../../interfaces/settings.interface';
 import { ModeList } from '../../models/mode-list';
@@ -9,6 +16,7 @@ import { EditorConfig } from '../../models/editor-config.model';
   selector: 'fs-image-editor',
   templateUrl: 'image-editor.component.html',
   styleUrls: [ 'image-editor.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsImageEditorComponent implements OnInit, OnDestroy {
   @Input() config: EditorConfig;
