@@ -22,7 +22,7 @@ import { FsImageEditorService } from './services/image-editor.service';
   providers: [],
 })
 export class FsImageEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FsImageEditorModule> {
     return {
       ngModule: FsImageEditorModule,
       providers: [FsImageEditorService]
