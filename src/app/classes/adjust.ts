@@ -8,17 +8,10 @@ export class Adjust {
   private _hue = 0;
   private _saturation = 0;
 
-  constructor(private _container: any,
-              private _editor: Editor) {
-  }
-
-  public show() {
-    this._editor.canvasElem.classList.remove('cropper-hidden');
-  }
-
-  public hide() {
-
-  }
+  constructor(
+    private _container: HTMLElement,
+    private _editor: Editor,
+  ) { }
 
   public setBrightness(value: number) {
     this._brightness = value;
@@ -56,7 +49,7 @@ export class Adjust {
   }
 
   public destroy() {
-    
+
   }
 
 }

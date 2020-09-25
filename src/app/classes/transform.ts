@@ -8,10 +8,14 @@ export class Transform {
   private _rotate = 0;
   private _scale = [1, 1];
 
-  constructor(private _container: any,
-              private _editor: Editor) {
+  constructor(
+    private _container: any,
+    private _editor: Editor,
+  ) {
 
-    // this.createCropperArea();
+  //   setTimeout(() => {
+  //     this.createCropperArea();
+  //  },100)
   }
 
   public createCropperArea() {
@@ -26,13 +30,12 @@ export class Transform {
   public hide() {
     // @todo change selection
     const container = this._container.querySelector('.cropper-container');
-    if (container) {
-      container.classList.add('hidden');
-    }
 
-    if (this._cropper) {
-      this._editor.canvas = this._cropper.getCroppedCanvas();
-    }
+    // if (this._cropper) {
+    //   this._editor.canvas = this._cropper.getCroppedCanvas();
+    // }
+
+    this.destroy();
   }
 
   public show() {
@@ -40,9 +43,7 @@ export class Transform {
     // we need it because in first initialization of the class we don't need to create a cropper
     // but we can't hide it, because it creates dynamiclly
     // @todo hide cropper on girst initialization
-    if (!this._cropper) {
-      this.createCropperArea();
-    }
+    this.createCropperArea();
 
     this._cropper.replace(this._editor.base64data);
   }
@@ -53,9 +54,10 @@ export class Transform {
   }
 
   public destroy() {
-    this._cropper.destroy();
+    if (this._cropper) {
+      this._cropper.destroy();
+    }
   }
-
 
 }
 

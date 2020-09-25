@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FsImageEditorComponent } from '@firestitch/image-editor';
 
 @Component({
   selector: 'base-editor',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./base-editor.component.scss']
 })
 export class BaseEditorComponent {
+
+  @ViewChild(FsImageEditorComponent) public imageEditor: FsImageEditorComponent;
+
   public config = { width: '400px', height: '300px' };
   public imageUrl = '';
   public images = [
@@ -19,6 +23,6 @@ export class BaseEditorComponent {
   }
 
   public choseImage(image) {
-    this.imageUrl = image.url;
+    this.imageEditor.loadImage(image.url);
   }
 }

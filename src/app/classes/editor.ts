@@ -21,9 +21,13 @@ export class Editor {
   protected _adjust: Adjust;
   protected _transform: Transform;
 
-  constructor(private _container: any,
-              private _zone: NgZone) {
-  }
+  constructor(
+    private _container: any,
+    private _zone: NgZone,
+  ) {
+    this._adjust = new Adjust(this._container, this);
+    this._transform = new Transform(this._container, this);
+   }
 
   get canvas() {
     return this._canvas;
@@ -43,24 +47,8 @@ export class Editor {
 
   set canvas(newCanvasData) {
     this._texture = this._canvas.texture(newCanvasData);
-
-    // apply the ink filter
     this._canvas.draw(this._texture).update();
     this.base64data = this._canvas.toDataURL();
-  }
-
-  public events() {
-    this._imageElem.onload = this.initializeSettings.bind(this);
-  }
-
-  public changeMode(mode: ModeList) {
-    if (mode === ModeList.Adjust) {
-      this.adjustMode();
-    }
-
-    if (mode === ModeList.Transform) {
-      this.transformMode();
-    }
   }
 
   public changeBrightness(brightness: number) {
@@ -87,12 +75,6 @@ export class Editor {
     this._transform.setScale(scale);
   }
 
-  public initializeSettings() {
-    this.createCanvas();
-    this.initializeEditors();
-    this.base64data = this._canvasElem.toDataURL();
-  }
-
   public initConfig(config: EditorConfig) {
     this.config = new EditorConfig(config);
   }
@@ -102,19 +84,37 @@ export class Editor {
     this._imageElem = document.createElement('img');
     this._imageElem.crossOrigin = 'anonymous';
     this._imageElem.src = imageUrl;
-    this._imageElem.setAttribute('width',  this.config.width);
-    this._imageElem.setAttribute('height', this.config.height);
+
     container.appendChild(this._imageElem);
-    this.events();
+    this._imageElem.addEventListener('load', (event) => {
+
+      let width = (event.target as any).clientWidth;
+      let height = (event.target as any).clientHeight;
+
+      if (width > height) {
+
+        if (width > container.offsetWidth) {
+          const maxWidth = container.offsetWidth * .8;
+          height = height * (1 - ((width - maxWidth) / width));
+          width = maxWidth;
+        }
+      }
+
+      this._imageElem.setAttribute('width',  width);
+      this._imageElem.setAttribute('height', height);
+
+      this.createCanvas();
+      this.base64data = this._canvasElem.toDataURL();
+    });
   }
 
   public adjustMode() {
-    this._transform.hide();
-    this._adjust.show();
+    if (this._transform) {
+      this._transform.hide();
+    }
   }
 
   public transformMode() {
-    this._adjust.hide();
     this._transform.show();
   }
 
@@ -140,8 +140,7 @@ export class Editor {
   }
 
   private initializeEditors() {
-    this._adjust = new Adjust(this._container, this);
-    this._transform = new Transform(this._container, this);
+
   }
 
   public destroy() {

@@ -1,12 +1,15 @@
+import { Editor } from './../../classes/editor';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
+  NgZone,
   OnDestroy,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
-import { FsImageEditorService } from '../../services/image-editor.service';
 import { ISettings } from '../../interfaces/settings.interface';
 import { ModeList } from '../../models/mode-list';
 import { EditorConfig } from '../../models/editor-config.model';
@@ -19,82 +22,102 @@ import { EditorConfig } from '../../models/editor-config.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsImageEditorComponent implements OnInit, OnDestroy {
-  @Input() config: EditorConfig;
 
-  @Input()
-  set imageUrl(url: string) {
-    this.setDefaultSettings();
-    this._imageUrl = url;
+  @ViewChild('container', { static: true }) private _container: ElementRef;
 
-    if (this._imageUrl) {
-      this._editor.update(this._el, this._imageUrl);
-    }
+  @Input() public config: EditorConfig;
+  @Input() public image: string
+
+  get editor() {
+    return this._editor;
   }
 
-  get imageUrl() {
-    return this._imageUrl;
+  public selectedIndexChange(index) {
+    if (index === 0) {
+      this.editor.adjustMode();
+    }
+    if (index === 1) {
+      this.editor.transformMode();
+    }
   }
 
   public modes = ModeList;
   public mode: ModeList = ModeList.Home;
-  public settings: ISettings;
+  public settings: ISettings = {
+    brightness: 0,
+    contrast: 0,
+    hue: 0,
+    saturation: 0,
+    rotate: 0,
+    scaleX: 1,
+    scaleY: 1
+  };
 
-  private _imageUrl = null;
+  private _editor: Editor;
 
-  constructor(private _editor: FsImageEditorService,
-              private _el: ElementRef) {
-  }
+  constructor(
+    private _el: ElementRef,
+    private _zone: NgZone,
+    private _cdRef: ChangeDetectorRef,
+  ) {}
 
   public ngOnInit() {
-    this._editor.initConfig(this.config);
+    if (this.image) {
+      this.loadImage(this.image);
+    }
   }
 
   public ngOnDestroy() {
     this._editor.destroy();
   }
 
-  /**
-   * Set mode and change containers depends on it if it is necessary
-   * @param mode
-   */
-  public setMode(mode: ModeList) {
-    this.mode = mode;
-    this._editor.changeMode(mode);
+  public loadImage(image: string) {
+
+    if (this._editor) {
+      this._editor.destroy();
+    }
+
+    this._editor = new Editor(this._container.nativeElement, this._zone);
+    this._editor.initConfig(this.config);
+    this._editor.initEditor(image);
+    this._editor.adjustMode();
+
+    this._cdRef.markForCheck();
   }
 
   /**
    * Set a new brightness filter value for image
    */
-  public changeBrightness() {
-    this._editor.changeBrightness(this.settings.brightness);
+  public changeBrightness(brightness) {
+    this._editor.changeBrightness(brightness);
   }
 
   /**
    * Set a new contrast filter value for image
    */
-  public changeContrast() {
-    this._editor.changeContrast(this.settings.contrast);
+  public changeContrast(contrast) {
+    this._editor.changeContrast(contrast);
   }
 
   /**
    * Set a new hue filter value for image
    */
-  public changeHue() {
-    this._editor.changeHue(this.settings.hue);
+  public changeHue(hue) {
+    this._editor.changeHue(hue);
   }
 
   /**
    * Set a new saturation filter value for image
    */
-  public changeSaturation() {
-    this._editor.changeSaturation(this.settings.saturation);
+  public changeSaturation(saturation) {
+    this._editor.changeSaturation(saturation);
   }
 
   /**
    * Set a new rotation value for image
    */
-  public changeRotation() {
-    this._editor.changeRotation(this.settings.rotate);
+  public changeRotation(rotate) {
+    this._editor.changeRotation(rotate);
   }
 
   /**
@@ -121,21 +144,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     const rotate = this.settings.rotate || 1;
     const absValue = absDegree * (Math.floor(rotate / absDegree));
     this.settings.rotate = absValue + degree;
-    this.changeRotation();
+    this.changeRotation(this.settings.rotate);
   }
 
-  /**
-   * Set default zero settings
-   */
-  private setDefaultSettings() {
-    this.settings = {
-      brightness: 0,
-      contrast: 0,
-      hue: 0,
-      saturation: 0,
-      rotate: 0,
-      scaleX: 1,
-      scaleY: 1
-    }
-  }
 }

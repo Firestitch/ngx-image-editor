@@ -1,148 +1,116 @@
-<div class="container">
-    <div class="img-container"></div>
-    <div class="controls" [ngSwitch]="mode" *ngIf="imageUrl">
+<div class="container" #container>
+  <div class="toolbar" *ngIf="editor">
+    <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>tune</mat-icon>
+        </ng-template>
 
-        <ng-container *ngSwitchCase="modes.Home">
-            <button type="button" class="control-button" id="adjust-mode-btn" (click)="setMode(modes.Adjust)">
-                <i class="material-icons">tune</i>
-                <label>Adjust</label>
-            </button>
+          <div class="heading">Adjust</div>
 
-            <button type="button" class="control-button" id="transform-mode-btn" (click)="setMode(modes.Transform)">
-                <i class="material-icons">crop_rotate</i>
-                <label>Transform</label>
-            </button>
-        </ng-container>
+          <div class="row">
+            <mat-icon>brightness_5</mat-icon>
+            <span class="label">Brightness</span>
+            <mat-slider
+                [max]="1"
+                [min]="-.9999"
+                [step]=".01"
+                (ngModelChange)="changeBrightness($event)"
+                [(ngModel)]="settings.brightness">
+            </mat-slider>
+          </div>
 
-        <!-- Adjust -->
+          <div class="row">
+            <mat-icon>tonality</mat-icon>
+            <span class="label">Contrast</span>
+            <mat-slider
+                [max]="1"
+                [min]="-.9999"
+                [step]=".01"
+                (ngModelChange)="changeContrast($event)"
+                [(ngModel)]="settings.contrast">
+            </mat-slider>
+          </div>
 
-        <ng-container *ngSwitchCase="modes.Adjust">
-            <button type="button" class="control-button" (click)="setMode(modes.Home)">
-                <i class="material-icons">navigate_before</i>
-            </button>
+          <div class="row">
+            <mat-icon>palette</mat-icon>
+            <span class="label">Hue</span>
+            <mat-slider
+                [max]="1"
+                [min]="-.9999"
+                [step]=".01"
+                (ngModelChange)="changeHue($event)"
+                [(ngModel)]="settings.hue">
+            </mat-slider>
+          </div>
 
-            <button type="button" class="control-button" id="brightness-mode-btn" (click)="setMode(modes.Brightness)">
-                <i class="material-icons">brightness_5</i>
-                <label>Brightness</label>
-            </button>
+          <div class="row">
+            <mat-icon>invert_colors</mat-icon>
+            <span class="label">Saturation</span>
+            <mat-slider
+                [max]="1"
+                [min]="-.9999"
+                [step]=".01"
+                (ngModelChange)="changeSaturation($event)"
+                [(ngModel)]="settings.saturation">
+            </mat-slider>
+          </div>
 
-            <button type="button" class="control-button" id="contrast-mode-btn" (click)="setMode(modes.Contrast)">
-                <i class="material-icons">tonality</i>
-                <label>Contrast</label>
-            </button>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>crop_rotate</mat-icon>
+        </ng-template>
 
-            <button type="button" class="control-button" id="hue-mode-btn" (click)="setMode(modes.Hue)">
-                <i class="material-icons">palette</i>
-                <label>Hue</label>
-            </button>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="heading">Crop</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>TODO</p>
+            </mat-expansion-panel>
 
-            <button type="button" class="control-button" id="saturation-mode-btn" (click)="setMode(modes.Saturation)">
-                <i class="material-icons">invert_colors</i>
-                <label>Saturation</label>
-            </button>
-        </ng-container>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="heading">Rotate</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <button mat-raised-button (click)="rotateByDegree(-45)"><mat-icon>rotate_left</mat-icon>Left</button>
+                <button mat-raised-button (click)="rotateByDegree(45)"><mat-icon>rotate_right</mat-icon>Right</button>
+              </div>
 
-        <ng-container *ngSwitchCase="modes.Brightness">
-            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">
-                <i class="material-icons">navigate_before</i>
-            </button>
+              <div class="row">
+                <mat-icon>autorenew</mat-icon>
+                <span class="label">Free Rotate</span>
+                <mat-slider
+                    [max]="180"
+                    [min]="-180"
+                    [step]="1"
+                    (ngModelChange)="changeRotation($event)"
+                    [(ngModel)]="settings.rotate">
+                </mat-slider>
+              </div>
+            </mat-expansion-panel>
 
-            <div class="control-input" id="brightness">
-                <div>
-                    <input type="range" min="-1" max="1" value="0" step="0.01"
-                           [(ngModel)]="settings.brightness" (ngModelChange)="changeBrightness()">
-                    <label> Brightness </label>
-                </div>
-            </div>
-        </ng-container>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="heading">Flip</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <button mat-raised-button (click)="changeFlip('y')" class="flip-vertical"><mat-icon>flip</mat-icon>Vertical</button>
+                <button mat-raised-button (click)="changeFlip('x')"><mat-icon>flip</mat-icon>Horizontal</button>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
 
-        <ng-container *ngSwitchCase="modes.Contrast">
-            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">
-                <i class="material-icons">navigate_before</i>
-            </button>
-
-            <div class="control-input" id="contrast">
-                <div>
-                    <input type="range" min="-1" max="1" value="0" step="0.01"
-                           [(ngModel)]="settings.contrast" (ngModelChange)="changeContrast()">
-                    <label> Contrast </label>
-                </div>
-            </div>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="modes.Hue">
-            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">
-                <i class="material-icons">navigate_before</i>
-            </button>
-
-            <div class="control-input" id="hue">
-                <div>
-                    <input type="range" min="-1" max="1" value="0" step="0.01"
-                           [(ngModel)]="settings.hue" (ngModelChange)="changeHue()">
-                    <label> Hue </label>
-                </div>
-            </div>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="modes.Saturation">
-            <button type="button" class="control-button" (click)="setMode(modes.Adjust)">
-                <i class="material-icons">navigate_before</i>
-            </button>
-
-            <div class="control-input" id="saturation">
-                <div>
-                    <input type="range" min="-1" max="1" value="0" step="0.01"
-                           [(ngModel)]="settings.saturation" (ngModelChange)="changeSaturation()">
-                    <label> Saturation </label>
-                </div>
-            </div>
-        </ng-container>
-
-        <!-- Transform -->
-
-        <ng-container *ngSwitchCase="modes.Transform">
-            <button type="button" class="control-button" (click)="setMode(modes.Home)">
-                <i class="material-icons">navigate_before</i>
-            </button>
-
-            <button type="button" class="control-button" id="flip-hor" (click)="changeFlip('x')">
-                <i class="material-icons">flip</i>
-                <label>Flip</label>
-            </button>
-
-            <button type="button" class="control-button" id="flip-ver" (click)="changeFlip('y')">
-                <i class="material-icons icon-rotate-90">flip</i>
-                <label>Flip</label>
-            </button>
-
-            <button type="button" class="control-button" id="rotate-left" (click)="rotateByDegree(-45)">
-                <i class="material-icons">rotate_left</i>
-                <label>Rotate Left</label>
-            </button>
-
-            <button type="button" class="control-button" id="rotate-right" (click)="rotateByDegree(45)">
-                <i class="material-icons">rotate_right</i>
-                <label>Rotate Right</label>
-            </button>
-
-            <button type="button" class="control-button" id="rotate-free-mode-btn" (click)="setMode(modes.Rotate)">
-                <i class="material-icons">sync</i>
-                <label>Free Rotate</label>
-            </button>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="modes.Rotate">
-            <button type="button" class="control-button" (click)="setMode(modes.Transform)">
-                <i class="material-icons">navigate_before</i>
-            </button>
-
-            <div class="control-input" id="rotate">
-                <div>
-                    <input type="range" min="-180" max="180" value="0" step="10"
-                           [(ngModel)]="settings.rotate" (ngModelChange)="changeRotation()">
-                    <label> Free Rotate </label>
-                </div>
-            </div>
-        </ng-container>
-    </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="img-container"></div>
 </div>

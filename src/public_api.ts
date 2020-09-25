@@ -14,7 +14,3 @@ export { EditorConfig } from './app/models/editor-config.model';
 
 // Interfaces
 export { ISettings } from './app/interfaces/settings.interface';
-
-// Services
-export { FsImageEditorService } from './app/services/image-editor.service';
-
