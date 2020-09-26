@@ -2,7 +2,6 @@ import { Editor } from './editor';
 
 export class Adjust {
 
-  // image filters
   private _brightness = 0;
   private _contrast = 0;
   private _hue = 0;
@@ -14,37 +13,36 @@ export class Adjust {
 
   public setBrightness(value: number) {
     this._brightness = value;
-    this.applyFilters();
+    this.brightnessContrast();
   }
 
   public setContrast(value: number) {
     this._contrast = value;
-    this.applyFilters();
+    this.brightnessContrast();
   }
 
   public setHue(value: number) {
     this._hue = value;
-    this.applyFilters();
+    this.hueSaturation();
   }
 
   public setSaturation(value: number) {
     this._saturation = value;
-    this.applyFilters();
+    this.hueSaturation();
   }
 
-  public applyFilters() {
-    // if there is a problem for some reason
-    if (!this._editor.canvas) {
-      return;
-    }
-
+  public brightnessContrast() {
     this._editor.canvas
       .draw(this._editor.texture)
       .brightnessContrast(this._brightness, this._contrast)
+      .update();
+  }
+
+  public hueSaturation() {
+    this._editor.canvas
+      .draw(this._editor.texture)
       .hueSaturation(this._hue, this._saturation)
       .update();
-
-    this._editor.base64data = this._editor.canvas.toDataURL();
   }
 
   public destroy() {

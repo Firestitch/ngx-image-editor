@@ -13,6 +13,9 @@ import {
 import { ISettings } from '../../interfaces/settings.interface';
 import { ModeList } from '../../models/mode-list';
 import { EditorConfig } from '../../models/editor-config.model';
+import { MatSliderChange } from '@angular/material/slider';
+import { interval, Subject } from 'rxjs';
+import { debounce, throttle } from 'rxjs/operators';
 
 
 @Component({
@@ -28,6 +31,8 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
   @Input() public config: EditorConfig;
   @Input() public image: string
 
+  private _throttle$ = new Subject();
+
   get editor() {
     return this._editor;
   }
@@ -42,7 +47,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
   }
 
   public adjustMode() {
-    this.editor.transform.destroy();
+    this.editor.adjustMode();
   }
 
   public transformMode() {
@@ -67,7 +72,15 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     private _el: ElementRef,
     private _zone: NgZone,
     private _cdRef: ChangeDetectorRef,
-  ) {}
+  ) {
+    this._throttle$
+      .pipe(
+        debounce(val => interval(0))
+      )
+      .subscribe((func: any) => {
+        func();
+      });
+  }
 
   public ngOnInit() {
     if (this.image) {
@@ -85,7 +98,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
       this._editor.destroy();
     }
 
-    this._editor = new Editor(this._container.nativeElement, this._zone);
+    this._editor = new Editor(this._container.nativeElement);
     this._editor.initConfig(this.config);
     this._editor.initEditor(image);
     this._editor.adjustMode();
@@ -96,36 +109,40 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
   /**
    * Set a new brightness filter value for image
    */
-  public changeBrightness(brightness) {
-    this._editor.changeBrightness(brightness);
+  public changeBrightness(event: MatSliderChange) {
+    this._throttle$.next(() => { this._editor.changeBrightness(event.value); });
   }
 
   /**
    * Set a new contrast filter value for image
    */
-  public changeContrast(contrast) {
-    this._editor.changeContrast(contrast);
+  public changeContrast(event: MatSliderChange) {
+    this._throttle$.next(() => { this._editor.changeContrast(event.value); });
   }
 
   /**
    * Set a new hue filter value for image
    */
-  public changeHue(hue) {
-    this._editor.changeHue(hue);
+  public changeHue(event: MatSliderChange) {
+    this._throttle$.next(() => { this._editor.changeHue(event.value); });
   }
 
   /**
    * Set a new saturation filter value for image
    */
-  public changeSaturation(saturation) {
-    this._editor.changeSaturation(saturation);
+  public changeSaturation(event: MatSliderChange) {
+    this._throttle$.next(() => { this._editor.changeSaturation(event.value); });
   }
 
   /**
    * Set a new rotation value for image
    */
-  public changeRotation(rotate) {
-    this._editor.changeRotation(rotate);
+  public changeRotation(event: MatSliderChange) {
+    this._editor.changeRotation(event.value);
+  }
+
+  public aspectRatio(ratio) {
+    this._editor.aspectRatio(ratio);
   }
 
   /**
@@ -152,37 +169,11 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     const rotate = this.settings.rotate || 1;
     const absValue = absDegree * (Math.floor(rotate / absDegree));
     this.settings.rotate = absValue + degree;
-    this.changeRotation(this.settings.rotate);
+     this._editor.changeRotation(this.settings.rotate);
   }
 
-    public urlToFile (url, filename) {
-    return fetch(url)
-      .then((res) => {
-        return res.arrayBuffer();
-      })
-
-      .then((buf) => {
-        return new File([buf], filename);
-      });
-  }
-
-  public downloadBase64File() {
-
-    const fileData = this.editor.base64data.replace(/.*base64,/, '');
-    const fileUrl = `data:application/octet-stream;base64,${fileData}`;
-    const fileName = 'test.png';
-
-    this.urlToFile(fileUrl, fileName)
-      .then((file) => {
-        const blob = new Blob([file], { type: 'application/octet-stream' });
-        const blobURL = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = blobURL;
-        link.setAttribute('download', fileName);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-      });
+  public download() {
+    this.editor.download();
   }
 
 }

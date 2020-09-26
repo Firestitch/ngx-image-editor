@@ -1,4 +1,4 @@
 <img *ngFor="let image of images" [src]="image.url" (click)="choseImage(image)" class="preview">
-
+<button mat-raised-button (click)="download()">Download</button>
 
 <fs-image-editor [config]="config" [image]="imageUrl"></fs-image-editor>

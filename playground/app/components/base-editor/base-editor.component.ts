@@ -8,7 +8,8 @@ import { FsImageEditorComponent } from '@firestitch/image-editor';
 })
 export class BaseEditorComponent {
 
-  @ViewChild(FsImageEditorComponent) public imageEditor: FsImageEditorComponent;
+  @ViewChild(FsImageEditorComponent)
+  public imageEditor: FsImageEditorComponent;
 
   public config = { width: '400px', height: '300px' };
   public imageUrl = '';
@@ -24,5 +25,9 @@ export class BaseEditorComponent {
 
   public choseImage(image) {
     this.imageEditor.loadImage(image.url);
+  }
+
+  public download() {
+    this.imageEditor.download();
   }
 }

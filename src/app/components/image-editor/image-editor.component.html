@@ -12,9 +12,9 @@
           <span class="label">Brightness</span>
           <mat-slider
               [max]="1"
-              [min]="-.9999"
+              [min]="-1"
               [step]=".01"
-              (ngModelChange)="changeBrightness($event)"
+              (input)="changeBrightness($event)"
               [(ngModel)]="settings.brightness">
           </mat-slider>
         </div>
@@ -24,9 +24,9 @@
           <span class="label">Contrast</span>
           <mat-slider
               [max]="1"
-              [min]="-.9999"
+              [min]="-1"
               [step]=".01"
-              (ngModelChange)="changeContrast($event)"
+              (input)="changeContrast($event)"
               [(ngModel)]="settings.contrast">
           </mat-slider>
         </div>
@@ -36,9 +36,9 @@
           <span class="label">Hue</span>
           <mat-slider
               [max]="1"
-              [min]="-.9999"
+              [min]="-1"
               [step]=".01"
-              (ngModelChange)="changeHue($event)"
+              (input)="changeHue($event)"
               [(ngModel)]="settings.hue">
           </mat-slider>
         </div>
@@ -48,21 +48,27 @@
           <span class="label">Saturation</span>
           <mat-slider
               [max]="1"
-              [min]="-.9999"
+              [min]="-1"
               [step]=".01"
-              (ngModelChange)="changeSaturation($event)"
+              (input)="changeSaturation($event)"
               [(ngModel)]="settings.saturation">
           </mat-slider>
         </div>
       </mat-expansion-panel>
 
-      <mat-expansion-panel (opened)="transformMode()">
+      <mat-expansion-panel (opened)="transformMode()" class="panel-crop">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <div class="heading">Crop</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p>TODO</p>
+        <div class="buttons">
+          <button mat-raised-button (click)="aspectRatio(undefined)">Free</button>
+          <button mat-raised-button (click)="aspectRatio(16/9)">16:9</button>
+          <button mat-raised-button (click)="aspectRatio(4/3)">4:3</button>
+          <button mat-raised-button (click)="aspectRatio(2/3)">2:3</button>
+          <button mat-raised-button (click)="aspectRatio(1)">1:1</button>
+        </div>
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="transformMode()">
@@ -83,7 +89,8 @@
               [max]="180"
               [min]="-180"
               [step]="1"
-              (ngModelChange)="changeRotation($event)"
+              [thumbLabel]="true"
+              (input)="changeRotation($event)"
               [(ngModel)]="settings.rotate">
           </mat-slider>
         </div>

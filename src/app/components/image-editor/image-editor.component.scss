@@ -55,6 +55,7 @@
 
   .toolbar {
     background-color: #22272F;
+    padding: 10px;
 
     .row {
       display: flex;
@@ -76,6 +77,22 @@
       }
 
       & button:last-of-type {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.panel-crop {
+  .buttons {
+    display: flex;
+
+    button {
+      padding: 0 5px;
+      min-width: auto;
+      margin-right: 4px;
+      flex: 1;
+      &:last-child {
         margin: 0;
       }
     }

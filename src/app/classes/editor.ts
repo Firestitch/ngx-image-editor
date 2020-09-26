@@ -6,11 +6,10 @@ import { EditorConfig } from '../models/editor-config.model';
 
 export class Editor {
   public config: EditorConfig;
-  public base64data: string;
+  public base64data1: string;
 
   // dom elements
   protected _imageElem: HTMLImageElement;
-  protected _canvasElem: HTMLCanvasElement;
 
   // glfx dom elements
   protected _canvas: any;
@@ -22,13 +21,12 @@ export class Editor {
 
   constructor(
     private _container: any,
-    private _zone: NgZone,
   ) {
-    this._canvasElem = this._canvas = GLFX.canvas();
-    _container.querySelector('.img-container').append(this.canvasElem);
+    this._canvas = GLFX.canvas();
+    _container.querySelector('.img-container').append(this.canvas);
 
     this._adjust = new Adjust(this);
-    this._transform = new Transform(this._canvasElem, this);
+    this._transform = new Transform(this._canvas, this);
    }
 
   get transform() {
@@ -43,18 +41,8 @@ export class Editor {
     return this._texture;
   }
 
-  get canvasElem() {
-    return this._canvasElem;
-  }
-
   get image() {
     return this._imageElem;
-  }
-
-  set canvas(newCanvasData) {
-    this._texture = this._canvas.texture(newCanvasData);
-    this._canvas.draw(this._texture).update();
-    this.base64data = this._canvas.toDataURL();
   }
 
   public changeBrightness(brightness: number) {
@@ -79,6 +67,10 @@ export class Editor {
 
   public changeScale(scale: [number, number]) {
     this._transform.setScale(scale);
+  }
+
+  public aspectRatio(ratio: number) {
+    this._transform.setAspectRatio(ratio);
   }
 
   public initConfig(config: EditorConfig) {
@@ -110,16 +102,29 @@ export class Editor {
       this._imageElem.setAttribute('height', height);
 
       this.createCanvas();
-      this.base64data = this._canvasElem.toDataURL();
+      this.base64data1 = this._canvas.toDataURL();
     });
   }
 
+  public get base64data() {
+    this._canvas.draw(this._texture).update();
+    return this._canvas.toDataURL();
+  }
+
   public adjustMode() {
+    if (this._transform.inited) {
+
+      this._texture.loadContentsOf(this._transform.cropper.getCroppedCanvas());
+      this._canvas.draw(this._texture).update();
+    }
+
     this._transform.destroy();
   }
 
   public transformMode() {
-    this._transform.init();
+    if (!this._transform.inited) {
+      this._transform.init();
+    }
   }
 
   private createCanvas() {
@@ -139,8 +144,41 @@ export class Editor {
     }
   }
 
+
+
+  private _urlToFile(url, filename) {
+    return fetch(url)
+      .then((res) => {
+        return res.arrayBuffer();
+      })
+
+      .then((buf) => {
+        return new File([buf], filename);
+      });
+  }
+
+  public download() {
+
+    const fileData = this.base64data.replace(/.*base64,/, '');
+    const fileUrl = `data:application/octet-stream;base64,${fileData}`;
+    const fileName = 'test.png';
+
+    this._urlToFile(fileUrl, fileName)
+      .then((file) => {
+        const blob = new Blob([file], { type: 'application/octet-stream' });
+        const blobURL = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobURL;
+        link.setAttribute('download', fileName);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
+  }
+
+
   public destroy() {
-    this._canvasElem.remove();
+    this._canvas.remove();
     this._adjust.destroy();
     if (this._texture) {
       this._texture.destroy();
