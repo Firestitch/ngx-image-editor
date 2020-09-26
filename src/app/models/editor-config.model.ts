@@ -1,11 +1,11 @@
 import Cropper from 'cropperjs';
 
 const DEFAULT_CROPPER_OPTIONS = {
-  zoomable: false,
-  zoomOnWheel: false,
-  autoCrop: true,
-  background: true,
-  autoCropArea: 1
+  zoomable: true,
+  zoomOnWheel: true,
+  autoCrop: false,
+  background: false,
+  autoCropArea: true
 };
 
 export class EditorConfig {

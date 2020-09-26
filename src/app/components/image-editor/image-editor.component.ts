@@ -41,6 +41,14 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  public adjustMode() {
+    this.editor.transform.destroy();
+  }
+
+  public transformMode() {
+    this.editor.transformMode();
+  }
+
   public modes = ModeList;
   public mode: ModeList = ModeList.Home;
   public settings: ISettings = {
@@ -145,6 +153,36 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     const absValue = absDegree * (Math.floor(rotate / absDegree));
     this.settings.rotate = absValue + degree;
     this.changeRotation(this.settings.rotate);
+  }
+
+    public urlToFile (url, filename) {
+    return fetch(url)
+      .then((res) => {
+        return res.arrayBuffer();
+      })
+
+      .then((buf) => {
+        return new File([buf], filename);
+      });
+  }
+
+  public downloadBase64File() {
+
+    const fileData = this.editor.base64data.replace(/.*base64,/, '');
+    const fileUrl = `data:application/octet-stream;base64,${fileData}`;
+    const fileName = 'test.png';
+
+    this.urlToFile(fileUrl, fileName)
+      .then((file) => {
+        const blob = new Blob([file], { type: 'application/octet-stream' });
+        const blobURL = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobURL;
+        link.setAttribute('download', fileName);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
   }
 
 }

@@ -1,116 +1,106 @@
 <div class="container" #container>
   <div class="toolbar" *ngIf="editor">
-    <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)">
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon>tune</mat-icon>
-        </ng-template>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="adjustMode()">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="heading">Adjust</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <mat-icon>brightness_5</mat-icon>
+          <span class="label">Brightness</span>
+          <mat-slider
+              [max]="1"
+              [min]="-.9999"
+              [step]=".01"
+              (ngModelChange)="changeBrightness($event)"
+              [(ngModel)]="settings.brightness">
+          </mat-slider>
+        </div>
 
-          <div class="heading">Adjust</div>
+        <div class="row">
+          <mat-icon>tonality</mat-icon>
+          <span class="label">Contrast</span>
+          <mat-slider
+              [max]="1"
+              [min]="-.9999"
+              [step]=".01"
+              (ngModelChange)="changeContrast($event)"
+              [(ngModel)]="settings.contrast">
+          </mat-slider>
+        </div>
 
-          <div class="row">
-            <mat-icon>brightness_5</mat-icon>
-            <span class="label">Brightness</span>
-            <mat-slider
-                [max]="1"
-                [min]="-.9999"
-                [step]=".01"
-                (ngModelChange)="changeBrightness($event)"
-                [(ngModel)]="settings.brightness">
-            </mat-slider>
-          </div>
+        <div class="row">
+          <mat-icon>palette</mat-icon>
+          <span class="label">Hue</span>
+          <mat-slider
+              [max]="1"
+              [min]="-.9999"
+              [step]=".01"
+              (ngModelChange)="changeHue($event)"
+              [(ngModel)]="settings.hue">
+          </mat-slider>
+        </div>
 
-          <div class="row">
-            <mat-icon>tonality</mat-icon>
-            <span class="label">Contrast</span>
-            <mat-slider
-                [max]="1"
-                [min]="-.9999"
-                [step]=".01"
-                (ngModelChange)="changeContrast($event)"
-                [(ngModel)]="settings.contrast">
-            </mat-slider>
-          </div>
+        <div class="row">
+          <mat-icon>invert_colors</mat-icon>
+          <span class="label">Saturation</span>
+          <mat-slider
+              [max]="1"
+              [min]="-.9999"
+              [step]=".01"
+              (ngModelChange)="changeSaturation($event)"
+              [(ngModel)]="settings.saturation">
+          </mat-slider>
+        </div>
+      </mat-expansion-panel>
 
-          <div class="row">
-            <mat-icon>palette</mat-icon>
-            <span class="label">Hue</span>
-            <mat-slider
-                [max]="1"
-                [min]="-.9999"
-                [step]=".01"
-                (ngModelChange)="changeHue($event)"
-                [(ngModel)]="settings.hue">
-            </mat-slider>
-          </div>
+      <mat-expansion-panel (opened)="transformMode()">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="heading">Crop</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>TODO</p>
+      </mat-expansion-panel>
 
-          <div class="row">
-            <mat-icon>invert_colors</mat-icon>
-            <span class="label">Saturation</span>
-            <mat-slider
-                [max]="1"
-                [min]="-.9999"
-                [step]=".01"
-                (ngModelChange)="changeSaturation($event)"
-                [(ngModel)]="settings.saturation">
-            </mat-slider>
-          </div>
+      <mat-expansion-panel (opened)="transformMode()">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="heading">Rotate</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <button mat-raised-button (click)="rotateByDegree(-45)"><mat-icon>rotate_left</mat-icon>Left</button>
+          <button mat-raised-button (click)="rotateByDegree(45)"><mat-icon>rotate_right</mat-icon>Right</button>
+        </div>
 
-      </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon>crop_rotate</mat-icon>
-        </ng-template>
+        <div class="row">
+          <mat-icon>autorenew</mat-icon>
+          <span class="label">Free Rotate</span>
+          <mat-slider
+              [max]="180"
+              [min]="-180"
+              [step]="1"
+              (ngModelChange)="changeRotation($event)"
+              [(ngModel)]="settings.rotate">
+          </mat-slider>
+        </div>
+      </mat-expansion-panel>
 
-          <mat-accordion>
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <div class="heading">Crop</div>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p>TODO</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <div class="heading">Rotate</div>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="row">
-                <button mat-raised-button (click)="rotateByDegree(-45)"><mat-icon>rotate_left</mat-icon>Left</button>
-                <button mat-raised-button (click)="rotateByDegree(45)"><mat-icon>rotate_right</mat-icon>Right</button>
-              </div>
-
-              <div class="row">
-                <mat-icon>autorenew</mat-icon>
-                <span class="label">Free Rotate</span>
-                <mat-slider
-                    [max]="180"
-                    [min]="-180"
-                    [step]="1"
-                    (ngModelChange)="changeRotation($event)"
-                    [(ngModel)]="settings.rotate">
-                </mat-slider>
-              </div>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <div class="heading">Flip</div>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="row">
-                <button mat-raised-button (click)="changeFlip('y')" class="flip-vertical"><mat-icon>flip</mat-icon>Vertical</button>
-                <button mat-raised-button (click)="changeFlip('x')"><mat-icon>flip</mat-icon>Horizontal</button>
-              </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-
-      </mat-tab>
-    </mat-tab-group>
+      <mat-expansion-panel (opened)="transformMode()">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="heading">Flip</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <button mat-raised-button (click)="changeFlip('y')" class="flip-vertical"><mat-icon>flip</mat-icon>Vertical</button>
+          <button mat-raised-button (click)="changeFlip('x')"><mat-icon>flip</mat-icon>Horizontal</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
-  <div class="img-container"></div>
+  <div class="img-container cropper-bg"></div>
 </div>

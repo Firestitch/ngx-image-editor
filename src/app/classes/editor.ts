@@ -3,7 +3,6 @@ import * as GLFX from 'glfx';
 import { Adjust } from './adjust';
 import { Transform } from './transform';
 import { EditorConfig } from '../models/editor-config.model';
-import { ModeList } from '../models/mode-list';
 
 export class Editor {
   public config: EditorConfig;
@@ -25,9 +24,16 @@ export class Editor {
     private _container: any,
     private _zone: NgZone,
   ) {
-    this._adjust = new Adjust(this._container, this);
-    this._transform = new Transform(this._container, this);
+    this._canvasElem = this._canvas = GLFX.canvas();
+    _container.querySelector('.img-container').append(this.canvasElem);
+
+    this._adjust = new Adjust(this);
+    this._transform = new Transform(this._canvasElem, this);
    }
+
+  get transform() {
+    return this._transform;
+  }
 
   get canvas() {
     return this._canvas;
@@ -109,44 +115,36 @@ export class Editor {
   }
 
   public adjustMode() {
-    if (this._transform) {
-      this._transform.hide();
-    }
+    this._transform.destroy();
   }
 
   public transformMode() {
-    this._transform.show();
+    this._transform.init();
   }
 
   private createCanvas() {
     try {
-      this._canvas = GLFX.canvas();
+
+      // convert the image to a texture
+      this._texture = this._canvas.texture(this._imageElem);
+
+      // apply
+      this._canvas.draw(this._texture).update();
+
+      // replace the image with the canvas
+      //this._imageElem.parentNode.insertBefore(this._canvas, this._imageElem);
+      this._imageElem.parentNode.removeChild(this._imageElem);
     } catch (e) {
-      alert(e);
-      return;
+      console.log(e);
     }
-
-    // convert the image to a texture
-    this._texture = this._canvas.texture(this._imageElem);
-
-    // apply
-    this._canvas.draw(this._texture).update();
-
-    // replace the image with the canvas
-    this._imageElem.parentNode.insertBefore(this._canvas, this._imageElem);
-    this._imageElem.parentNode.removeChild(this._imageElem);
-
-    this._canvasElem = this._container.querySelector('canvas');
-  }
-
-  private initializeEditors() {
-
   }
 
   public destroy() {
     this._canvasElem.remove();
-    this._adjust && this._adjust.destroy();
-    this._texture && this._texture.destroy();
-    this._transform && this._transform.destroy();
+    this._adjust.destroy();
+    if (this._texture) {
+      this._texture.destroy();
+    }
+    this._transform.destroy();
   }
 }

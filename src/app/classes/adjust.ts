@@ -9,7 +9,6 @@ export class Adjust {
   private _saturation = 0;
 
   constructor(
-    private _container: HTMLElement,
     private _editor: Editor,
   ) { }
 
