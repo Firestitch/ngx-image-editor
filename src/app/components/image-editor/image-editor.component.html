@@ -108,6 +108,14 @@
         </div>
       </mat-expansion-panel>
     </mat-accordion>
+    <div class="action-buttons">
+      <ng-container
+        *ngIf="actionButtons">
+          <ng-template
+            [ngTemplateOutlet]="actionButtons">
+          </ng-template>
+      </ng-container>
+    </div>
   </div>
   <div class="img-container cropper-bg"></div>
 </div>

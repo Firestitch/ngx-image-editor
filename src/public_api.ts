@@ -14,3 +14,5 @@ export { EditorConfig } from './app/models/editor-config.model';
 
 // Interfaces
 export { ISettings } from './app/interfaces/settings.interface';
+
+export { FsImageEditorActionButtonsDirective } from './app/directives/action-buttons.directive';

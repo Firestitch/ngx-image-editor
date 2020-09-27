@@ -1,5 +1,8 @@
+import { DialogComponent } from './../dialog/dialog.component';
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { FsImageEditorComponent } from '@firestitch/image-editor';
+import { FsFile } from '@firestitch/file';
 
 @Component({
   selector: 'base-editor',
@@ -8,10 +11,6 @@ import { FsImageEditorComponent } from '@firestitch/image-editor';
 })
 export class BaseEditorComponent {
 
-  @ViewChild(FsImageEditorComponent)
-  public imageEditor: FsImageEditorComponent;
-
-  public config = { width: '400px', height: '300px' };
   public imageUrl = '';
   public images = [
     { url: 'https://i.imgur.com/5zQYr6o.jpg' },
@@ -19,15 +18,29 @@ export class BaseEditorComponent {
     { url: 'https://i.imgur.com/v3Z5sxC.jpg' }
   ];
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog,
+  ) {}
 
+  public open(data) {
+    const dialogRef = this.dialog.open(DialogComponent,
+      {
+        data,
+        height: '80%',
+        width: '80%',
+      });
+
+    dialogRef.afterClosed()
+      .subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
-  public choseImage(image) {
-    this.imageEditor.loadImage(image.url);
+  public uploadImage(fsFile: FsFile) {
+    this.open({ imageBlob: fsFile.file });
   }
 
-  public download() {
-    this.imageEditor.download();
+  public selectImage(image) {
+    this.open({ imageUrl: image.url });
   }
 }

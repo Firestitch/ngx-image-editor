@@ -1,0 +1,25 @@
+::ng-deep .image-editor-panel {
+
+  .mat-dialog-container {
+    padding: 0;
+  }
+
+  .dialog-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .mat-dialog-content {
+      max-height: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .mat-dialog-actions {
+      margin: 0;
+      padding: 0 10px;
+      background-color: #22272F;
+    }
+  }
+}

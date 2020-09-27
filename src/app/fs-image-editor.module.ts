@@ -1,14 +1,14 @@
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { FsImageEditorComponent } from './components/image-editor/image-editor.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 
+import { FsImageEditorComponent } from './components/image-editor/image-editor.component';
+import { FsImageEditorActionButtonsDirective } from './directives/action-buttons.directive';
 
 @NgModule({
   imports: [
@@ -16,16 +16,17 @@ import { FsImageEditorComponent } from './components/image-editor/image-editor.c
     FormsModule,
 
     MatSliderModule,
-    MatTabsModule,
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,
   ],
   exports: [
     FsImageEditorComponent,
+    FsImageEditorActionButtonsDirective,
   ],
   declarations: [
     FsImageEditorComponent,
+    FsImageEditorActionButtonsDirective,
   ],
 })
 export class FsImageEditorModule {

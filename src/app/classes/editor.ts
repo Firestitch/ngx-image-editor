@@ -77,11 +77,11 @@ export class Editor {
     this.config = new EditorConfig(config);
   }
 
-  public initEditor(imageUrl: string) {
+  public initEditor(imageSrc: string) {
     const container = this._container.querySelector('.img-container');
     this._imageElem = document.createElement('img');
     this._imageElem.crossOrigin = 'anonymous';
-    this._imageElem.src = imageUrl;
+    this._imageElem.src = imageSrc;
 
     container.appendChild(this._imageElem);
     this._imageElem.addEventListener('load', (event) => {
@@ -157,15 +157,10 @@ export class Editor {
       });
   }
 
-  public download() {
-
-    const fileData = this.base64data.replace(/.*base64,/, '');
-    const fileUrl = `data:application/octet-stream;base64,${fileData}`;
-    const fileName = 'test.png';
-
-    this._urlToFile(fileUrl, fileName)
-      .then((file) => {
-        const blob = new Blob([file], { type: 'application/octet-stream' });
+  public download(fileName?: string) {
+    fileName = fileName ?? 'test.png'; //get this filename from the original url or blob
+    this.getBlob(fileName)
+    .then((blob) => {
         const blobURL = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = blobURL;
@@ -176,6 +171,20 @@ export class Editor {
       });
   }
 
+  public getBlob(fileName?: string): Promise<Blob> {
+    fileName = fileName ?? 'test.png'; //get this filename from the original url or blob
+    const fileData = this.base64data.replace(/.*base64,/, '');
+    const fileUrl = `data:application/octet-stream;base64,${fileData}`;
+    return new Promise((resolve, reject) => {
+      this._urlToFile(fileUrl, fileName)
+        .then((file) => {
+          const blob = new Blob([file], { type: 'application/octet-stream' });
+          resolve(blob);
+        }, (error) => {
+            reject(error);
+        });
+    })
+  }
 
   public destroy() {
     this._canvas.remove();

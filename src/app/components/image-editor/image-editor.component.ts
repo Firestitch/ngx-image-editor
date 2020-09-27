@@ -1,13 +1,13 @@
-import { Editor } from './../../classes/editor';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ContentChild,
   ElementRef,
   Input,
-  NgZone,
   OnDestroy,
   OnInit,
+  TemplateRef,
   ViewChild
 } from '@angular/core';
 import { ISettings } from '../../interfaces/settings.interface';
@@ -15,8 +15,9 @@ import { ModeList } from '../../models/mode-list';
 import { EditorConfig } from '../../models/editor-config.model';
 import { MatSliderChange } from '@angular/material/slider';
 import { interval, Subject } from 'rxjs';
-import { debounce, throttle } from 'rxjs/operators';
-
+import { debounce } from 'rxjs/operators';
+import { FsImageEditorActionButtonsDirective } from '../../directives/action-buttons.directive';
+import { Editor } from './../../classes/editor';
 
 @Component({
   selector: 'fs-image-editor',
@@ -26,7 +27,11 @@ import { debounce, throttle } from 'rxjs/operators';
 })
 export class FsImageEditorComponent implements OnInit, OnDestroy {
 
-  @ViewChild('container', { static: true }) private _container: ElementRef;
+  @ContentChild(FsImageEditorActionButtonsDirective, { static: false, read: TemplateRef })
+  public actionButtons: FsImageEditorActionButtonsDirective = null;
+
+  @ViewChild('container', { static: true })
+  private _container: ElementRef;
 
   @Input() public config: EditorConfig;
   @Input() public image: string
@@ -70,7 +75,6 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
 
   constructor(
     private _el: ElementRef,
-    private _zone: NgZone,
     private _cdRef: ChangeDetectorRef,
   ) {
     this._throttle$
@@ -84,7 +88,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     if (this.image) {
-      this.loadImage(this.image);
+      this.loadImageUrl(this.image);
     }
   }
 
@@ -92,7 +96,17 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     this._editor.destroy();
   }
 
-  public loadImage(image: string) {
+  public loadImageBlob(blob: Blob) {
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.loadImageUrl(String(reader.result));
+    }
+
+    reader.readAsDataURL(blob);
+  }
+
+  public loadImageUrl(url: string) {
 
     if (this._editor) {
       this._editor.destroy();
@@ -100,7 +114,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
 
     this._editor = new Editor(this._container.nativeElement);
     this._editor.initConfig(this.config);
-    this._editor.initEditor(image);
+    this._editor.initEditor(url);
     this._editor.adjustMode();
 
     this._cdRef.markForCheck();
@@ -172,8 +186,12 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
      this._editor.changeRotation(this.settings.rotate);
   }
 
-  public download() {
-    this.editor.download();
+  public getBlob(filename?: string) {
+    this.editor.getBlob(filename);
+  }
+
+  public download(filename?: string) {
+    this.editor.download(filename);
   }
 
 }
