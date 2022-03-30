@@ -33,7 +33,7 @@ const routes: Routes = [
     FsExampleModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     FsMessageModule.forRoot(),
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
   ],
   entryComponents: [
     DialogComponent,
