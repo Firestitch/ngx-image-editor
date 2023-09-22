@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FsImageEditorComponent } from '@firestitch/image-editor';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FsImageEditorComponent } from '../../../../src/public_api';
 
 @Component({
   templateUrl: 'dialog.component.html',
@@ -18,7 +18,7 @@ export class DialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
+  ) { }
 
   public ngOnInit() {
 

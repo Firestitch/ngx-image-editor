@@ -1,8 +1,7 @@
-import { DialogComponent } from './../dialog/dialog.component';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FsImageEditorComponent } from '@firestitch/image-editor';
 import { FsFile } from '@firestitch/file';
+import { DialogComponent } from './../dialog/dialog.component';
 
 @Component({
   selector: 'base-editor',
@@ -20,7 +19,7 @@ export class BaseEditorComponent {
 
   constructor(
     public dialog: MatDialog,
-  ) {}
+  ) { }
 
   public open(data) {
     const dialogRef = this.dialog.open(DialogComponent,
@@ -32,8 +31,8 @@ export class BaseEditorComponent {
 
     dialogRef.afterClosed()
       .subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+        console.log(`Dialog result: ${result}`);
+      });
   }
 
   public uploadImage(fsFile: FsFile) {

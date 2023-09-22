@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 
-import { FsImageEditorModule } from '@firestitch/image-editor';
 import { FsExampleModule } from '@firestitch/example';
-import { FsMessageModule } from '@firestitch/message';
 import { FsFileModule } from '@firestitch/file';
+import { FsMessageModule } from '@firestitch/message';
+import { FsImageEditorModule } from '../../src/public_api';
 
-import { ToastrModule } from 'ngx-toastr';
-
-import { AppMaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { BaseEditorComponent, ExamplesComponent } from './components';
 import { DialogComponent } from './components/dialog';
+import { AppMaterialModule } from './material.module';
 
 
 const routes: Routes = [
@@ -31,7 +29,6 @@ const routes: Routes = [
     FsFileModule.forRoot(),
     FsImageEditorModule.forRoot(),
     FsExampleModule.forRoot(),
-    ToastrModule.forRoot({ preventDuplicates: true }),
     FsMessageModule.forRoot(),
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
   ],

@@ -10,30 +10,29 @@ import {
   TemplateRef,
   ViewChild
 } from '@angular/core';
-import { ISettings } from '../../interfaces/settings.interface';
-import { ModeList } from '../../models/mode-list';
-import { EditorConfig } from '../../models/editor-config.model';
 import { MatSliderChange } from '@angular/material/slider';
-import { interval, Subject } from 'rxjs';
+import { Subject, interval } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { FsImageEditorActionButtonsDirective } from '../../directives/action-buttons.directive';
+import { ISettings } from '../../interfaces/settings.interface';
+import { ModeList } from '../../models/mode-list';
 import { Editor } from './../../classes/editor';
 
 @Component({
   selector: 'fs-image-editor',
   templateUrl: 'image-editor.component.html',
-  styleUrls: [ 'image-editor.component.scss' ],
+  styleUrls: ['image-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsImageEditorComponent implements OnInit, OnDestroy {
 
   @ContentChild(FsImageEditorActionButtonsDirective, { static: false, read: TemplateRef })
-  public actionButtons: FsImageEditorActionButtonsDirective = null;
+  public actionButtons: TemplateRef<any> = null;
 
   @ViewChild('container', { static: true })
   private _container: ElementRef;
 
-  @Input() public config: EditorConfig;
+  @Input() public config: any;
   @Input() public image: string
 
   private _throttle$ = new Subject();
@@ -183,7 +182,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
     const rotate = this.settings.rotate || 1;
     const absValue = absDegree * (Math.floor(rotate / absDegree));
     this.settings.rotate = absValue + degree;
-     this._editor.changeRotation(this.settings.rotate);
+    this._editor.changeRotation(this.settings.rotate);
   }
 
   public getBlob(filename?: string) {

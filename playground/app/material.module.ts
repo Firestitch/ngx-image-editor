@@ -1,5 +1,5 @@
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {NgModule} from '@angular/core';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,40 +32,40 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-  @NgModule({
-    exports: [
-      MatAutocompleteModule,
-      MatButtonModule,
-      MatButtonToggleModule,
-      MatCardModule,
-      MatCheckboxModule,
-      MatChipsModule,
-      MatStepperModule,
-      MatDatepickerModule,
-      MatDialogModule,
-      MatExpansionModule,
-      MatGridListModule,
-      MatIconModule,
-      MatInputModule,
-      MatListModule,
-      MatMenuModule,
-      MatNativeDateModule,
-      MatPaginatorModule,
-      MatProgressBarModule,
-      MatProgressSpinnerModule,
-      MatRadioModule,
-      MatRippleModule,
-      MatSelectModule,
-      MatSidenavModule,
-      MatSliderModule,
-      MatSlideToggleModule,
-      MatSnackBarModule,
-      MatSortModule,
-      MatTableModule,
-      MatTabsModule,
-      MatToolbarModule,
-      MatTooltipModule,
-      FlexLayoutModule
-    ]
-  })
-  export class AppMaterialModule {}
+@NgModule({
+  exports: [
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    FlexLayoutModule
+  ]
+})
+export class AppMaterialModule { }

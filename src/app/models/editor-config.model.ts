@@ -9,9 +9,10 @@ const DEFAULT_CROPPER_OPTIONS = {
 };
 
 export class EditorConfig {
-  public width: string;
-  public height: string;
-  public cropperOptions: Cropper.Options;
+
+  public width?: string;
+  public height?: string;
+  public cropperOptions?: Cropper.Options;
 
   constructor(data: any = {}) {
     this.width = data.width || 'auto';
