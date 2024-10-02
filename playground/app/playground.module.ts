@@ -20,28 +20,25 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppMaterialModule,
-    FormsModule,
-    FsFileModule.forRoot(),
-    FsImageEditorModule.forRoot(),
-    FsExampleModule.forRoot(),
-    FsMessageModule.forRoot(),
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-  ],
-  entryComponents: [
-    DialogComponent,
-  ],
-  declarations: [
-    AppComponent,
-    DialogComponent,
-    ExamplesComponent,
-    BaseEditorComponent
-  ],
-  providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppMaterialModule,
+        FormsModule,
+        FsFileModule.forRoot(),
+        FsImageEditorModule.forRoot(),
+        FsExampleModule.forRoot(),
+        FsMessageModule.forRoot(),
+        RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    ],
+    declarations: [
+        AppComponent,
+        DialogComponent,
+        ExamplesComponent,
+        BaseEditorComponent
+    ],
+    providers: []
 })
 export class PlaygroundModule {
 }
