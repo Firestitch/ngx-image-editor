@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FsFile, FsFileModule } from '@firestitch/file';
 import { DialogComponent } from './../dialog/dialog.component';
@@ -12,6 +12,8 @@ import { MatButton } from '@angular/material/button';
     imports: [FsFileModule, MatButton]
 })
 export class BaseEditorComponent {
+  dialog = inject(MatDialog);
+
 
   public imageUrl = '';
   public images = [
@@ -19,10 +21,6 @@ export class BaseEditorComponent {
     { url: 'https://i.imgur.com/1Ul1TMZ.jpg' },
     { url: 'https://i.imgur.com/v3Z5sxC.jpg' }
   ];
-
-  constructor(
-    public dialog: MatDialog,
-  ) { }
 
   public open(data) {
     const dialogRef = this.dialog.open(DialogComponent,

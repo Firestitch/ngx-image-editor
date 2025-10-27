@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogClose } from '@angular/material/dialog';
 import { FsImageEditorComponent } from '../../../../src/public_api';
 import { CdkScrollable } from '@angular/cdk/scrolling';
@@ -13,6 +13,9 @@ import { MatButton } from '@angular/material/button';
     imports: [CdkScrollable, MatDialogContent, FsImageEditorComponent_1, FsImageEditorActionButtonsDirective, MatButton, MatDialogClose]
 })
 export class DialogComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<DialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+
 
   public image;
 
@@ -20,11 +23,6 @@ export class DialogComponent implements OnInit {
   public imageEditor: FsImageEditorComponent;
 
   public config = { width: '400px', height: '300px' };
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) { }
 
   public ngOnInit() {
 

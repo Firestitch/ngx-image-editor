@@ -1,15 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ContentChild,
-  ElementRef,
-  Input,
-  OnDestroy,
-  OnInit,
-  TemplateRef,
-  ViewChild
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy, OnInit, TemplateRef, ViewChild, inject } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { Subject, interval } from 'rxjs';
 import { debounce } from 'rxjs/operators';
@@ -39,6 +28,9 @@ import { NgTemplateOutlet } from '@angular/common';
     ],
 })
 export class FsImageEditorComponent implements OnInit, OnDestroy {
+  private _el = inject(ElementRef);
+  private _cdRef = inject(ChangeDetectorRef);
+
 
   @ContentChild(FsImageEditorActionButtonsDirective, { static: false, read: TemplateRef })
   public actionButtons: TemplateRef<any> = null;
@@ -86,10 +78,7 @@ export class FsImageEditorComponent implements OnInit, OnDestroy {
 
   private _editor: Editor;
 
-  constructor(
-    private _el: ElementRef,
-    private _cdRef: ChangeDetectorRef,
-  ) {
+  constructor() {
     this._throttle$
       .pipe(
         debounce(val => interval(0))
