@@ -1,8 +1,9 @@
-<img
-  *ngFor="let image of images"
-  [src]="image.url"
-  (click)="selectImage(image)"
-  class="preview">
+@for (image of images; track image) {
+  <img
+    [src]="image.url"
+    (click)="selectImage(image)"
+    class="preview">
+}
 
 <br><br>
 <fs-file

@@ -1,121 +1,115 @@
 <div class="container" #container>
-  <div class="toolbar" *ngIf="editor">
-    <mat-accordion>
-      <mat-expansion-panel (opened)="adjustMode()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="heading">Adjust</div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-          <mat-icon>brightness_5</mat-icon>
-          <span class="label">Brightness</span>
-          <!-- <mat-slider
-              [max]="1"
-              [min]="-1"
-              [step]=".01"
-              (input)="changeBrightness($event)"
-              [(ngModel)]="settings.brightness">
+  @if (editor) {
+    <div class="toolbar">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="adjustMode()">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="heading">Adjust</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <mat-icon>brightness_5</mat-icon>
+            <span class="label">Brightness</span>
+            <!-- <mat-slider
+            [max]="1"
+            [min]="-1"
+            [step]=".01"
+            (input)="changeBrightness($event)"
+            [(ngModel)]="settings.brightness">
           </mat-slider> -->
         </div>
-
         <div class="row">
           <mat-icon>tonality</mat-icon>
           <span class="label">Contrast</span>
           <!-- <mat-slider
-              [max]="1"
-              [min]="-1"
-              [step]=".01"
-              (input)="changeContrast($event)"
-              [(ngModel)]="settings.contrast">
-          </mat-slider> -->
-        </div>
-
-        <div class="row">
-          <mat-icon>palette</mat-icon>
-          <span class="label">Hue</span>
-          <!-- <mat-slider
-              [max]="1"
-              [min]="-1"
-              [step]=".01"
-              (input)="changeHue($event)"
-              [(ngModel)]="settings.hue">
-          </mat-slider> -->
-        </div>
-
-        <div class="row">
-          <mat-icon>invert_colors</mat-icon>
-          <span class="label">Saturation</span>
-          <!-- <mat-slider
-              [max]="1"
-              [min]="-1"
-              [step]=".01"
-              (input)="changeSaturation($event)"
-              [(ngModel)]="settings.saturation">
-          </mat-slider> -->
-        </div>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel (opened)="transformMode()" class="panel-crop">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="heading">Crop</div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="buttons">
-          <button mat-raised-button (click)="aspectRatio(undefined)">Free</button>
-          <button mat-raised-button (click)="aspectRatio(16/9)">16:9</button>
-          <button mat-raised-button (click)="aspectRatio(4/3)">4:3</button>
-          <button mat-raised-button (click)="aspectRatio(2/3)">2:3</button>
-          <button mat-raised-button (click)="aspectRatio(1)">1:1</button>
-        </div>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel (opened)="transformMode()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="heading">Rotate</div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-          <button mat-raised-button (click)="rotateByDegree(-45)"><mat-icon>rotate_left</mat-icon>Left</button>
-          <button mat-raised-button (click)="rotateByDegree(45)"><mat-icon>rotate_right</mat-icon>Right</button>
-        </div>
-
-        <div class="row">
-          <mat-icon>autorenew</mat-icon>
-          <span class="label">Free Rotate</span>
-          <!-- <mat-slider
-              [max]="180"
-              [min]="-180"
-              [step]="1"
-              [thumbLabel]="true"
-              (input)="changeRotation($event)"
-              [(ngModel)]="settings.rotate">
-          </mat-slider> -->
-        </div>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel (opened)="transformMode()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="heading">Flip</div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-          <button mat-raised-button (click)="changeFlip('y')" class="flip-vertical"><mat-icon>flip</mat-icon>Vertical</button>
-          <button mat-raised-button (click)="changeFlip('x')"><mat-icon>flip</mat-icon>Horizontal</button>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <div class="action-buttons">
-      <ng-container
-        *ngIf="actionButtons">
-          <ng-container
-            [ngTemplateOutlet]="actionButtons">
-          </ng-container>
-      </ng-container>
+          [max]="1"
+          [min]="-1"
+          [step]=".01"
+          (input)="changeContrast($event)"
+          [(ngModel)]="settings.contrast">
+        </mat-slider> -->
+      </div>
+      <div class="row">
+        <mat-icon>palette</mat-icon>
+        <span class="label">Hue</span>
+        <!-- <mat-slider
+        [max]="1"
+        [min]="-1"
+        [step]=".01"
+        (input)="changeHue($event)"
+        [(ngModel)]="settings.hue">
+      </mat-slider> -->
     </div>
+    <div class="row">
+      <mat-icon>invert_colors</mat-icon>
+      <span class="label">Saturation</span>
+      <!-- <mat-slider
+      [max]="1"
+      [min]="-1"
+      [step]=".01"
+      (input)="changeSaturation($event)"
+      [(ngModel)]="settings.saturation">
+    </mat-slider> -->
   </div>
-  <div class="img-container cropper-bg"></div>
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="transformMode()" class="panel-crop">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div class="heading">Crop</div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="buttons">
+    <button mat-raised-button (click)="aspectRatio(undefined)">Free</button>
+    <button mat-raised-button (click)="aspectRatio(16/9)">16:9</button>
+    <button mat-raised-button (click)="aspectRatio(4/3)">4:3</button>
+    <button mat-raised-button (click)="aspectRatio(2/3)">2:3</button>
+    <button mat-raised-button (click)="aspectRatio(1)">1:1</button>
+  </div>
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="transformMode()">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div class="heading">Rotate</div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="row">
+    <button mat-raised-button (click)="rotateByDegree(-45)"><mat-icon>rotate_left</mat-icon>Left</button>
+    <button mat-raised-button (click)="rotateByDegree(45)"><mat-icon>rotate_right</mat-icon>Right</button>
+  </div>
+  <div class="row">
+    <mat-icon>autorenew</mat-icon>
+    <span class="label">Free Rotate</span>
+    <!-- <mat-slider
+    [max]="180"
+    [min]="-180"
+    [step]="1"
+    [thumbLabel]="true"
+    (input)="changeRotation($event)"
+    [(ngModel)]="settings.rotate">
+  </mat-slider> -->
+</div>
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="transformMode()">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div class="heading">Flip</div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="row">
+    <button mat-raised-button (click)="changeFlip('y')" class="flip-vertical"><mat-icon>flip</mat-icon>Vertical</button>
+    <button mat-raised-button (click)="changeFlip('x')"><mat-icon>flip</mat-icon>Horizontal</button>
+  </div>
+</mat-expansion-panel>
+</mat-accordion>
+<div class="action-buttons">
+  @if (actionButtons) {
+    <ng-container
+      [ngTemplateOutlet]="actionButtons">
+    </ng-container>
+  }
+</div>
+</div>
+}
+<div class="img-container cropper-bg"></div>
 </div>
