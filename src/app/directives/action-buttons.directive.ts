@@ -1,7 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[fsImageEditorActionButtons]',
+    selector: '[fsImageEditorActionButtons]',
+    standalone: true,
 })
 export class FsImageEditorActionButtonsDirective {
 

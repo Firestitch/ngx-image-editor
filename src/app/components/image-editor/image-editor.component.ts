@@ -17,12 +17,26 @@ import { FsImageEditorActionButtonsDirective } from '../../directives/action-but
 import { ISettings } from '../../interfaces/settings.interface';
 import { ModeList } from '../../models/mode-list';
 import { Editor } from './../../classes/editor';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'fs-image-editor',
-  templateUrl: 'image-editor.component.html',
-  styleUrls: ['image-editor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-image-editor',
+    templateUrl: 'image-editor.component.html',
+    styleUrls: ['image-editor.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        MatAccordion,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelTitle,
+        MatIcon,
+        MatButton,
+        NgTemplateOutlet,
+    ],
 })
 export class FsImageEditorComponent implements OnInit, OnDestroy {
 

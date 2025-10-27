@@ -11,23 +11,20 @@ import { FsImageEditorComponent } from './components/image-editor/image-editor.c
 import { FsImageEditorActionButtonsDirective } from './directives/action-buttons.directive';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-
-    MatSliderModule,
-    MatButtonModule,
-    MatIconModule,
-    MatExpansionModule,
-  ],
-  exports: [
-    FsImageEditorComponent,
-    FsImageEditorActionButtonsDirective,
-  ],
-  declarations: [
-    FsImageEditorComponent,
-    FsImageEditorActionButtonsDirective,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatSliderModule,
+        MatButtonModule,
+        MatIconModule,
+        MatExpansionModule,
+        FsImageEditorComponent,
+        FsImageEditorActionButtonsDirective,
+    ],
+    exports: [
+        FsImageEditorComponent,
+        FsImageEditorActionButtonsDirective,
+    ],
 })
 export class FsImageEditorModule {
   static forRoot(): ModuleWithProviders<FsImageEditorModule> {

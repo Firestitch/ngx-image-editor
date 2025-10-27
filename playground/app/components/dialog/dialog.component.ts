@@ -1,10 +1,16 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogClose } from '@angular/material/dialog';
 import { FsImageEditorComponent } from '../../../../src/public_api';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { FsImageEditorComponent as FsImageEditorComponent_1 } from '../../../../src/app/components/image-editor/image-editor.component';
+import { FsImageEditorActionButtonsDirective } from '../../../../src/app/directives/action-buttons.directive';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  templateUrl: 'dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+    templateUrl: 'dialog.component.html',
+    styleUrls: ['./dialog.component.scss'],
+    standalone: true,
+    imports: [CdkScrollable, MatDialogContent, FsImageEditorComponent_1, FsImageEditorActionButtonsDirective, MatButton, MatDialogClose]
 })
 export class DialogComponent implements OnInit {
 

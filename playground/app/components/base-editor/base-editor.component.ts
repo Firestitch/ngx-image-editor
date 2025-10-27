@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FsFile } from '@firestitch/file';
+import { FsFile, FsFileModule } from '@firestitch/file';
 import { DialogComponent } from './../dialog/dialog.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'base-editor',
-  templateUrl: 'base-editor.component.html',
-  styleUrls: ['./base-editor.component.scss']
+    selector: 'base-editor',
+    templateUrl: 'base-editor.component.html',
+    styleUrls: ['./base-editor.component.scss'],
+    standalone: true,
+    imports: [FsFileModule, MatButton]
 })
 export class BaseEditorComponent {
 
